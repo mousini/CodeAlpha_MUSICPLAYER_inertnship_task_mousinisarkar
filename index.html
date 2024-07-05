@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
-     <link rel="stylesheet" href="style.css">
-     <script src="https://kit.fontawesome.com/279a632d59.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/279a632d59.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -18,14 +18,39 @@
                     <i class="fa-solid fa-bars"></i>
                 </div>
             </nav>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQkzd_j1Km89v4laubosvSp9LOoT0atbKMHg&s" class="song-img">
-            <h1> Espresso </h1>
-            <p > Sabrina Carpenter </p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQkzd_j1Km89v4laubosvSp9LOoT0atbKMHg&s" class="song-img" alt="Album Art">
+            <h1>Espresso</h1>
+            <p>Sabrina Carpenter</p>
 
-            <audio controls>
+            <audio id="audio-player">
                 <source src="espresso.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
             </audio>
+            
+            <div class="controls">
+                <button id="play-pause-btn" class="circle">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+            </div>
         </div>
     </div>
+
+    <script>
+        const audioPlayer = document.getElementById('audio-player');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const playPauseIcon = playPauseBtn.querySelector('i');
+
+        playPauseBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseIcon.classList.remove('fa-play');
+                playPauseIcon.classList.add('fa-pause');
+            } else {
+                audioPlayer.pause();
+                playPauseIcon.classList.remove('fa-pause');
+                playPauseIcon.classList.add('fa-play');
+            }
+        });
+    </script>
 </body>
 </html>
